@@ -1,7 +1,9 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Program {
@@ -35,6 +37,17 @@ public class Program {
 			}
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
+		}
+
+		String[] lines = new String[] { "Good morning", "Good afternoon", "Good night" };
+		path = "C:\\ws_eclipse\\out.txt";
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+			for (String line : lines) {
+				bw.write(line);
+				bw.newLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
